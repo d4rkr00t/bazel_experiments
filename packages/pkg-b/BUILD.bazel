@@ -1,41 +1,38 @@
+load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
+load("//:build/rules/package-json.bzl", "package_json")
 
 package(default_visibility = ["//visibility:public"])
 
 deps = ["//packages/pkg-a"]
 
-pkg_npm(
-    name = "pkg-b",
+pkg_name = "pkg-b"
+
+package_json(
+    name = "package_json",
+    pkgName = pkg_name,
+)
+
+ts_project(
+    name = "ts",
+    srcs = glob([
+        "**/*.ts",
+    ]),
+    tsconfig = {
+        "compilerOptions": {
+            "declaration": True,
+            "outDir": "esm",
+            "types": [],
+        },
+    },
+    deps = deps,
+)
+
+js_library(
+    name = pkg_name,
+    package_name = pkg_name,
     srcs = ["package.json"],
     deps = [
-        ":cjs",
-        ":esm",
+        ":ts",
     ],
-)
-
-ts_project(
-    name = "cjs",
-    srcs = glob([
-        "**/*.ts",
-    ]),
-    declaration = True,
-    outdir = "dist/cjs",
-    tsconfig = "//:tsconfig.json",
-    deps = deps,
-)
-
-ts_project(
-    name = "esm",
-    srcs = glob([
-        "**/*.ts",
-    ]),
-    args = [
-        "--target",
-        "esnext",
-    ],
-    declaration = True,
-    outdir = "dist/esm",
-    tsconfig = "//:tsconfig.json",
-    deps = deps,
 )

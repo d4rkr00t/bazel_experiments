@@ -6,7 +6,7 @@
     "@bazel/bazelisk": "latest",
     "@bazel/buildifier": "latest",
     "@bazel/ibazel": "latest",
-    "@bazel/typescript": "^2.0.0-rc.0",
+    "@bazel/typescript": "^2.1.0",
     "typescript": "^3.9.6"
   },
   "scripts": {
