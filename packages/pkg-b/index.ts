@@ -1,3 +1,3 @@
 import { pkgA } from "pkg-a";
 
-pkgA();
+pkgA("123");

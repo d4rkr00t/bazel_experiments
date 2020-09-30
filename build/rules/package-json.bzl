@@ -9,6 +9,10 @@ def package_json(name, pkgName):
         extension = ".json",
         substitutions = {
             "NAME": pkgName,
+            "DESCRIPTION": "desc",
+            "REG_DEPENDENCIES": "{}",
+            "DEV_DEPENDENCIES": "{}",
+            "PEER_DEPENDENCIES": "{}",
         },
         template = Label("//:build/rules/package.json.tpl"),
     )

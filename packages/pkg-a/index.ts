@@ -1,3 +1,3 @@
-export function pkgA() {
-  console.log("pkg-a");
+export function pkgA(a: string) {
+  console.log("pkg-a", a);
 }
