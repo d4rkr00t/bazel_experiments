@@ -1,17 +1,11 @@
-load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
+load("@build_bazel_rules_nodejs//:index.bzl", "js_library", "pkg_npm")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("//:build/rules/package-json.bzl", "package_json")
 
 package(default_visibility = ["//visibility:public"])
 
 deps = ["//packages/pkg-a"]
 
 pkg_name = "pkg-b"
-
-package_json(
-    name = "package_json",
-    pkgName = pkg_name,
-)
 
 ts_project(
     name = "ts",
@@ -35,4 +29,10 @@ js_library(
     deps = [
         ":ts",
     ],
+)
+
+pkg_npm(
+    name = "pkg-b_npm",
+    srcs = ["package.json"],
+    deps = [":" + pkg_name],
 )

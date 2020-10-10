@@ -1,0 +1,10 @@
+{
+  "name": "pkg-b",
+  "version": "0.0.0",
+  "main": "./esm/index.js",
+  "module": "./esm/index.js",
+  "types": "./esm/index.d.ts",
+  "dependencies": {
+    "pkg-a": "0.0.0-PLACEHOLDER"
+  }
+}
