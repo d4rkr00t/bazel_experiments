@@ -2,3 +2,5 @@
 dist
 bazel-out
 node_modules
+pkg-a-0.1.0.tgz
+pkg-b-0.1.0.tgz

@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "build": "bazel build //...",
-    "test": "bazel test //..."
+    "test": "bazel test //...",
+    "release": "./build/release.sh pack"
   }
 }
