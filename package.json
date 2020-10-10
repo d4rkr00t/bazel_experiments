@@ -7,8 +7,12 @@
     "@bazel/buildifier": "latest",
     "@bazel/ibazel": "latest",
     "@bazel/typescript": "^2.1.0",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.6",
+    "@changesets/cli": "^2.11.0"
   },
+  "workspaces": [
+    "packages/**"
+  ],
   "scripts": {
     "build": "bazel build //...",
     "test": "bazel test //..."
