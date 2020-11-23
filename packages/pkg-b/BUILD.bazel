@@ -3,7 +3,11 @@ load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
 package(default_visibility = ["//visibility:public"])
 
-deps = ["//packages/pkg-a"]
+deps = [
+    "//packages/pkg-a",
+    "@npm//react",
+    "@npm//@types/react",
+]
 
 pkg_name = "pkg-b"
 
@@ -14,9 +18,24 @@ ts_project(
     ]),
     tsconfig = {
         "compilerOptions": {
+            "strict": True,
             "declaration": True,
             "outDir": "esm",
             "types": [],
+            "target": "es2019",
+            "module": "esnext",
+            "allowSyntheticDefaultImports": True,
+            "lib": [
+                "dom",
+                "es5",
+                "scripthost",
+                "es2015.core",
+                "es2015.collection",
+                "es2015.symbol",
+                "es2015.iterable",
+                "es2015.promise",
+                "es2016.array.include",
+            ],
         },
     },
     deps = deps,

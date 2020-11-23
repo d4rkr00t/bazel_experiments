@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/react": "16.9.2",
     "@bazel/bazelisk": "latest",
     "@bazel/buildifier": "latest",
     "@bazel/ibazel": "latest",
-    "@bazel/typescript": "^2.1.0",
+    "@bazel/typescript": "latest",
     "typescript": "^3.9.6",
-    "@changesets/cli": "^2.11.0"
+    "@changesets/cli": "^2.11.0",
+    "react": "^16.8.0"
   },
   "workspaces": [
     "packages/*"
